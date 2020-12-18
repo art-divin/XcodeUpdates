@@ -8,10 +8,10 @@ SwiftUI implementation of xcodes by RobotsAndPencils
 # Screenshots
 
 <p align="left">
-    <img src="downloads.png" width="500" max-width="90%" alt="Downloads List" />
+    <img src="downloads.png" width="600" max-width="90%" alt="Downloads List" />
 </p>
 <p align="left">
-    <img src="search.png" width="500" max-width="90%" alt="Search Functionality" />
+    <img src="search.png" width="600" max-width="90%" alt="Search Functionality" />
 </p>
 
 # Technical Details
