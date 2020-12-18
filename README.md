@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="AppIcon.png" width="400" max-width="90%" alt="XcodeUpdates" />
+</p>
+
 # XcodeUpdates
 SwiftUI implementation of xcodes by RobotsAndPencils
 
