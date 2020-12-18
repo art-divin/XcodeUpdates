@@ -54,7 +54,7 @@ struct AuthDialog: View {
             .padding(.bottom, 10)
             .navigationTitle("Enter AppleID Credentials")
         }
-        .frame(minWidth: 200, idealWidth: 300, maxWidth: 400, minHeight: 200, idealHeight: 200, maxHeight: 170, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        .frame(minWidth: 200, idealWidth: 300, maxWidth: 400, minHeight: 200, idealHeight: 200, maxHeight: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
 
