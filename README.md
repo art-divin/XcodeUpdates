@@ -1,9 +1,18 @@
-<p align="center">
-    <img src="AppIcon.png" width="400" max-width="90%" alt="XcodeUpdates" />
+<p align="left">
+    <img src="AppIcon.png" width="200" max-width="90%" alt="XcodeUpdates" />
 </p>
 
 # XcodeUpdates
 SwiftUI implementation of xcodes by RobotsAndPencils
+
+# Screenshots
+
+<p align="left">
+    <img src="downloads.png" width="200" max-width="90%" alt="Downloads List" />
+</p>
+<p align="left">
+    <img src="search.png" width="200" max-width="90%" alt="Search Functionality" />
+</p>
 
 # Technical Details
 - Project supports macOS Big Sur (11.+)
