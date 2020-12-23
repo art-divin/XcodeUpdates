@@ -38,7 +38,7 @@ class XcodesWrapper {
     private var writeHandle : FileHandle?
     private var readHandle : FileHandle?
     private var errorHandle : FileHandle?
-
+    
     private var cancellables : [AnyCancellable] = []
     private var process : Process = Process()
     private var outputData : Data?
@@ -97,8 +97,10 @@ class XcodesWrapper {
                 switch formattedOutput.first?.type {
                     case .error?:
                         output.send(.failure(.generalError(formattedOutput)))
+                        log("XXX sending output error: \(formattedOutput)")
                     default:
                         output.send(.success(formattedOutput))
+                        log("XXX sending output success: \(formattedOutput)")
                 }
             } else {
                 self.output.send(formattedOutput)
@@ -114,71 +116,73 @@ class XcodesWrapper {
         return retVal
     }()
     func run() {
-        self.log("XXX: started process 1")
-            let readPipe = Pipe()
-            let writePipe = Pipe()
-            let errorPipe = Pipe()
-            self.writeHandle = writePipe.fileHandleForWriting
-            self.readHandle = readPipe.fileHandleForReading
+        log("XXX: started process 1")
+        let readPipe = Pipe()
+        let writePipe = Pipe()
+        let errorPipe = Pipe()
+        self.writeHandle = writePipe.fileHandleForWriting
+        self.readHandle = readPipe.fileHandleForReading
         
-            self.errorHandle = errorPipe.fileHandleForReading
-            self.process.standardInput = writePipe
-            self.process.standardOutput = readPipe
+        self.errorHandle = errorPipe.fileHandleForReading
+        self.process.standardInput = writePipe
+        self.process.standardOutput = readPipe
         
-            self.process.standardError = errorPipe
-            self.process.executableURL = self.url
-            self.process.arguments = self.processArgs
-            self.readPipe = readPipe
-            self.writePipe = writePipe
-            self.errorPipe = errorPipe
-            do {
-                self.log("XXX: started process 2")
-                self.process.terminationHandler = { _ in
-                    self.outputData = (self.outputData ?? Data()) + (self.readHandle?.availableData ?? Data())
-                    self.log("XXX: ended process")
-                    self.log("XXX: output: \(self.formattedOutput)")
-                    self.sendOutput()
-                    self.close()
-                }
-                self.readHandle?.readabilityHandler = {
-                    let data = $0.availableData
-                    self.log("XXX readHandle: " + (String(data: data, encoding: .utf8) ?? ""))
-                    if data.isEmpty {
-                        return
-                    }
-                    self.outputData = (self.outputData ?? Data()) + data
-                    self.sendOutput()
-                }
-                self.errorHandle?.readabilityHandler = {
-                    let data = $0.availableData
-                    self.log("XXX  error " + (String(data: data, encoding: .utf8) ?? ""))
-                    if data.isEmpty {
-                        return
-                    }
-                    let error = String(data: data, encoding: .utf8)
-                    if error?.contains("[logging]") ?? true {
-                        return
-                    }
-                    self.outputData = (self.outputData ?? Data()) + data
-                    self.sendOutput()
-                }
-                try self.process.run()
-                self.queue.async {
-                    self.process.waitUntilExit()
-                    self.log("YYY: ended process")
-                }
-            } catch {
-                self.log("XXX Very error: \(error.localizedDescription)")
+        self.process.standardError = errorPipe
+        self.process.executableURL = self.url
+        self.process.arguments = self.processArgs
+        self.readPipe = readPipe
+        self.writePipe = writePipe
+        self.errorPipe = errorPipe
+        do {
+            log("XXX: started process 2")
+            self.process.terminationHandler = { _ in
+                self.outputData = (self.outputData ?? Data()) + (self.readHandle?.availableData ?? Data())
+                log("XXX: ended process")
+                log("XXX: output: \(self.formattedOutput)")
+                self.sendOutput()
+                self.close()
             }
+            self.readHandle?.readabilityHandler = {
+                let data = $0.availableData
+                log("XXX readHandle: " + (String(data: data, encoding: .utf8) ?? ""))
+                if data.isEmpty {
+                    return
+                }
+                self.outputData = (self.outputData ?? Data()) + data
+                self.sendOutput()
+            }
+            self.errorHandle?.readabilityHandler = {
+                let data = $0.availableData
+                log("XXX  error " + (String(data: data, encoding: .utf8) ?? ""))
+                if data.isEmpty {
+                    return
+                }
+                let error = String(data: data, encoding: .utf8)
+                if error?.contains("[logging]") ?? true {
+                    return
+                }
+                self.outputData = (self.outputData ?? Data()) + data
+                self.sendOutput()
+            }
+            try self.process.run()
+            self.queue.async {
+                self.process.waitUntilExit()
+                log("YYY: ended process")
+            }
+        } catch {
+            log("XXX Very error: \(error.localizedDescription)")
+        }
     }
     
-    private func log(_ string: String) {
-        let log = OSLog(subsystem: "com.xcodeupdates.xcodeupdatesinternal", category: .dynamicTracing)
-        #if DEBUG
-        os_log("XXX: %{public}@", log: log, type: .fault, string)
-        #else
-        // no-op
-        #endif
-    }
     
+    
+}
+
+internal func log(_ string: String) {
+    let log = OSLog(subsystem: "com.xcodeupdates.xcodeupdatesinternal", category: .dynamicTracing)
+    #if DEBUG
+    os_log("XXX: %{public}@", log: log, type: .fault, string)
+    #else
+    // no-op
+    #endif
 }

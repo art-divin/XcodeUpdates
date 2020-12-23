@@ -42,6 +42,7 @@ public class XcodeUpdatesRequest : Identifiable {
     
     func popFirst() -> Input? {
         guard !self.input.isEmpty else { return nil }
+        log("XXX sending next input: \(self.input.first!)")
         return self.input.remove(at: 0)
     }
     
