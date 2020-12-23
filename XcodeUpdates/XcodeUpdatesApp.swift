@@ -10,14 +10,11 @@ import SwiftUI
 @main
 struct XcodeUpdatesApp : App {
     
-    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             XcodeUpdatesList()
         }
-        .commands {
-            SidebarCommands()
-        }
     }
+    
 }
 

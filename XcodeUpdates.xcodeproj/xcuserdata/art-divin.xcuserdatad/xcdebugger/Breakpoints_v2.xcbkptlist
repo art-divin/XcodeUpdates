@@ -46,8 +46,8 @@
             filePath = "XcodeUpdatesInternal/XcodeUpdatesInternal/Wrapper/Models/ListModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "init(content:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "XcodeUpdatesInternal/XcodeUpdatesInternal/Wrapper/Models/ListModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "init(content:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -175,10 +175,10 @@
             filePath = "XcodeUpdatesInternal/XcodeUpdatesInternal/Wrapper/Models/ListModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "XcodeUpdatesResponseType"
-            landmarkType = "21">
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "init(string:parsed:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -191,8 +191,8 @@
             filePath = "XcodeUpdatesInternal/XcodeUpdatesInternal/Wrapper/XcodesWrapper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "sendOutput()"
             landmarkType = "7">
          </BreakpointContent>
@@ -207,10 +207,10 @@
             filePath = "XcodeUpdatesInternal/XcodeUpdatesInternal/Wrapper/Models/ListModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "XcodeUpdatesResponseType"
-            landmarkType = "21">
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "init(string:parsed:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -255,10 +255,10 @@
             filePath = "XcodeUpdatesInternal/XcodeUpdatesInternal/Wrapper/Models/ListModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "XcodeUpdatesResponseType"
-            landmarkType = "21">
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "init(string:parsed:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

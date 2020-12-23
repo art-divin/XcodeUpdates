@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import os
 
 // TODO: move to an XPC service
 // serve as an operation instead of just a class
@@ -105,29 +106,43 @@ class XcodesWrapper {
         }
     }
     
+    var readPipe : Pipe?
+    var writePipe : Pipe?
+    var errorPipe : Pipe?
+    lazy var queue : DispatchQueue = {
+        let retVal = DispatchQueue(label: "com.xcodeupdates.xcodeupdatesinternal")
+        return retVal
+    }()
     func run() {
-        DispatchQueue.global().async {
+        self.log("XXX: started process 1")
             let readPipe = Pipe()
             let writePipe = Pipe()
             let errorPipe = Pipe()
             self.writeHandle = writePipe.fileHandleForWriting
             self.readHandle = readPipe.fileHandleForReading
+        
             self.errorHandle = errorPipe.fileHandleForReading
             self.process.standardInput = writePipe
             self.process.standardOutput = readPipe
+        
             self.process.standardError = errorPipe
             self.process.executableURL = self.url
             self.process.arguments = self.processArgs
+            self.readPipe = readPipe
+            self.writePipe = writePipe
+            self.errorPipe = errorPipe
             do {
-                try self.process.run()
+                self.log("XXX: started process 2")
                 self.process.terminationHandler = { _ in
                     self.outputData = (self.outputData ?? Data()) + (self.readHandle?.availableData ?? Data())
-                    print("XXX: output: \(self.formattedOutput)")
+                    self.log("XXX: ended process")
+                    self.log("XXX: output: \(self.formattedOutput)")
                     self.sendOutput()
                     self.close()
                 }
                 self.readHandle?.readabilityHandler = {
                     let data = $0.availableData
+                    self.log("XXX readHandle: " + (String(data: data, encoding: .utf8) ?? ""))
                     if data.isEmpty {
                         return
                     }
@@ -136,6 +151,7 @@ class XcodesWrapper {
                 }
                 self.errorHandle?.readabilityHandler = {
                     let data = $0.availableData
+                    self.log("XXX  error " + (String(data: data, encoding: .utf8) ?? ""))
                     if data.isEmpty {
                         return
                     }
@@ -146,11 +162,23 @@ class XcodesWrapper {
                     self.outputData = (self.outputData ?? Data()) + data
                     self.sendOutput()
                 }
-                self.process.waitUntilExit()
+                try self.process.run()
+                self.queue.async {
+                    self.process.waitUntilExit()
+                    self.log("YYY: ended process")
+                }
             } catch {
-                print(error)
+                self.log("XXX Very error: \(error.localizedDescription)")
             }
-        }
+    }
+    
+    private func log(_ string: String) {
+        let log = OSLog(subsystem: "com.xcodeupdates.xcodeupdatesinternal", category: .dynamicTracing)
+        #if DEBUG
+        os_log("XXX: %{public}@", log: log, type: .fault, string)
+        #else
+        // no-op
+        #endif
     }
     
 }
