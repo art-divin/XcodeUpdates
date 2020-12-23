@@ -10,7 +10,6 @@ import Foundation
 extension XcodeUpdatesResponseType {
     
     enum Constants {
-        static let authPassword = "Apple ID Password:"
         static let auth = "Apple ID:"
         static let invalidUsername = "Invalid username and password combination. Attempted to sign in with username"
         static let twoFA = "Two-factor authentication is enabled for this account."
@@ -35,7 +34,7 @@ extension XcodeUpdatesResponseType {
     }
    
     init?(string: String, parsed: String?) {
-        if string.hasPrefix(Constants.auth) || string.hasPrefix(Constants.authPassword) {
+        if string.hasPrefix(Constants.auth) {
             self = .auth
         } else if string.hasPrefix(Constants.invalidUsername) {
             self = .error
