@@ -18,6 +18,7 @@ SwiftUI implementation of xcodes by RobotsAndPencils
 - Project supports macOS Big Sur (11.+)
 - Project is written in SwiftUI
 - Project relies on an amazing (xcodes)[https://github.com/RobotsAndPencils/xcodes] command line utility made by (RobotsAndPencils)[https://github.com/RobotsAndPencils] but uses the modified version which is available as open-source (here)[https://github.com/art-divin/xcodes].
+- aria2 is used as-is from https://github.com/aria2/aria2/releases/tag/release-1.35.0
 
 # Known Issues
 - 2FA when there are 2 or more verified phone numbers is not currently supported
