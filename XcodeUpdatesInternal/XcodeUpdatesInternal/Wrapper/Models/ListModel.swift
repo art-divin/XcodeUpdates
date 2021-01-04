@@ -11,6 +11,7 @@ extension XcodeUpdatesResponseType {
     
     enum Constants {
         static let auth = "Apple ID:"
+        static let password = "Apple ID Password:"
         static let invalidUsername = "Invalid username and password combination. Attempted to sign in with username"
         static let twoFA = "Two-factor authentication is enabled for this account."
         static let status = "\u{1B}[1A\u{1B}[K"
@@ -36,6 +37,8 @@ extension XcodeUpdatesResponseType {
     init?(string: String, parsed: String?) {
         if string.hasPrefix(Constants.auth) {
             self = .auth
+        } else if string.hasPrefix(Constants.password) {
+            self = .password
         } else if string.hasPrefix(Constants.invalidUsername) {
             self = .error
         } else if string.hasPrefix(Constants.twoFA) {
@@ -77,7 +80,7 @@ extension XcodeUpdatesResponseType {
 // say, json can be requested for all of the output, and that output would be then parsed here to create specific types
 // of the response models 
 public struct ListModel : Identifiable {
-    
+
     public var type : XcodeUpdatesResponseType
         
     public var id : String { self.content }

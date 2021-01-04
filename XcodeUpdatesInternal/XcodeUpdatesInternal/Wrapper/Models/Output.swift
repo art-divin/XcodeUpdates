@@ -12,7 +12,24 @@ public enum OutputError : Error {
     case anotherVersionIsBeingInstalled
 }
 
-public struct Output {
+public class Output : NSObject, NSSecureCoding {
+    
+    enum EncodingKeys {
+        static let content = "content"
+    }
+    
+    public static var supportsSecureCoding: Bool { true }
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(self.content, forKey: EncodingKeys.content)
+    }
+    
+    public required init?(coder: NSCoder) {
+        guard let content = coder.decodeObject(of: [NSString.self], forKey: EncodingKeys.content) as? String else {
+            return nil
+        }
+        self.content = content
+    }
     
     internal var first : ListModel? {
         self.contents.first
@@ -26,5 +43,9 @@ public struct Output {
         self.content.components(separatedBy: .newlines).filter { !$0.isEmpty }.compactMap { ListModel(content: $0) }
     }
     internal var content : String
+    
+    init(content: String) {
+        self.content = content
+    }
     
 }

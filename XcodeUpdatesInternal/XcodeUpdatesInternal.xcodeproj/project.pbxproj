@@ -10,6 +10,7 @@
 		C903C85E2562654E0076CD33 /* XcodeUpdatesInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C903C8542562654E0076CD33 /* XcodeUpdatesInternal.framework */; };
 		C903C8632562654E0076CD33 /* XcodeUpdatesInternalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903C8622562654E0076CD33 /* XcodeUpdatesInternalTests.swift */; };
 		C903C8652562654E0076CD33 /* XcodeUpdatesInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = C903C8572562654E0076CD33 /* XcodeUpdatesInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C91CF5FA25A22A1E00B6BDD7 /* XcodeUpdatesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF5F925A22A1E00B6BDD7 /* XcodeUpdatesServiceProtocol.swift */; };
 		C9344B02256576290090F019 /* XcodeUpdatesInternals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9344B01256576290090F019 /* XcodeUpdatesInternals.swift */; };
 		C9344B0725657DD90090F019 /* xcodes in Resources */ = {isa = PBXBuildFile; fileRef = C9344B0625657DD90090F019 /* xcodes */; };
 		C9344B132565825E0090F019 /* XcodesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9344B122565825E0090F019 /* XcodesWrapper.swift */; };
@@ -41,6 +42,7 @@
 		C903C85D2562654E0076CD33 /* XcodeUpdatesInternalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeUpdatesInternalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C903C8622562654E0076CD33 /* XcodeUpdatesInternalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeUpdatesInternalTests.swift; sourceTree = "<group>"; };
 		C903C8642562654E0076CD33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C91CF5F925A22A1E00B6BDD7 /* XcodeUpdatesServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeUpdatesServiceProtocol.swift; sourceTree = "<group>"; };
 		C9344B01256576290090F019 /* XcodeUpdatesInternals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeUpdatesInternals.swift; sourceTree = "<group>"; };
 		C9344B0625657DD90090F019 /* xcodes */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = xcodes; sourceTree = "<group>"; };
 		C9344B122565825E0090F019 /* XcodesWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodesWrapper.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				C9344B01256576290090F019 /* XcodeUpdatesInternals.swift */,
+				C91CF5F325A229D500B6BDD7 /* XPC */,
 				C9BC14BF2585621D00B78829 /* Extensions */,
 				C98C6F4E256AB7E600C880EB /* Public */,
 				C9344B0525657DD90090F019 /* External */,
@@ -139,6 +142,14 @@
 				C903C8642562654E0076CD33 /* Info.plist */,
 			);
 			path = XcodeUpdatesInternalTests;
+			sourceTree = "<group>";
+		};
+		C91CF5F325A229D500B6BDD7 /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+				C91CF5F925A22A1E00B6BDD7 /* XcodeUpdatesServiceProtocol.swift */,
+			);
+			path = XPC;
 			sourceTree = "<group>";
 		};
 		C9344B0525657DD90090F019 /* External */ = {
@@ -366,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C91CF5FA25A22A1E00B6BDD7 /* XcodeUpdatesServiceProtocol.swift in Sources */,
 				C98C6F61256AB86100C880EB /* Output.swift in Sources */,
 				C98C6F5D256AB84F00C880EB /* Input.swift in Sources */,
 				C98C6F50256AB7FF00C880EB /* XcodeUpdatesRequest.swift in Sources */,

@@ -16,6 +16,10 @@ final class XcodeUpdatesEnvironment : ObservableObject, EnvironmentKey {
     @Published var xcodeList : [XcodeVersion] = []
     @Published var downloadRequests : [XcodeUpdatesRequest] = []
     
+    public lazy var notificationCentre : NotificationCentre = {
+        NotificationCentre()
+    }()
+    
     private var installRequest : XcodeUpdatesRequest?
     
     public var isInstalling : Bool {
@@ -43,11 +47,20 @@ final class XcodeUpdatesEnvironment : ObservableObject, EnvironmentKey {
     }
     
     private func fetchXcodeList() {
-        self.internals.reloadExec(RequestFactory.update(searchPath: UserDefaults.standard.downloadsURL))
+        self.xpcWrapper.fetchXcodeList(url: UserDefaults.standard.downloadsURL)
+//        self.internals.reloadExec(RequestFactory.update(searchPath: UserDefaults.standard.downloadsURL))
     }
     
-    private func setup() {
-        self.internals.output.sink { [self] in
+    lazy private var xpcWrapper : XPCWrapper = {
+        XPCWrapper(sink: self.responseHandler)
+    }()
+    
+    private func setupXPC() {
+        self.xpcWrapper.fetchXcodeList(url: UserDefaults.standard.downloadsURL)
+    }
+    
+    var responseHandler : (XcodeUpdatesResponse) -> Void {
+        return {
             switch $0.type {
                 case .list:
                     let list = ($0.list?.reversed() ?? [])
@@ -58,8 +71,24 @@ final class XcodeUpdatesEnvironment : ObservableObject, EnvironmentKey {
                     _ = 0 // we need to always send the response
             }
             self.responseType.send($0.type)
-        }.store(in: &self.cancellables)
-        self.fetchXcodeList()
+        }
+    }
+    
+    private func setup() {
+//        self.internals.output.sink { [self] in
+//            switch $0.type {
+//                case .list:
+//                    let list = ($0.list?.reversed() ?? [])
+//                        .map{ $0.content }
+//                        .map(XcodeVersion.init)
+//                    self.xcodeList = list
+//                default:
+//                    _ = 0 // we need to always send the response
+//            }
+//            self.responseType.send($0.type)
+//        }.store(in: &self.cancellables)
+//        self.fetchXcodeList()
+        self.setupXPC()
     }
     
 }
@@ -93,17 +122,23 @@ extension XcodeUpdatesEnvironment {
         return .success(request)
     }
     
+    // Login using the given login credentials
     func sendAuthRequest(challenge: Auth) {
         let inputAppleID = Input(input: challenge.appleID)
         let inputPassword = Input(input: challenge.password)
-        let request = XcodeUpdatesRequest(input: [ inputAppleID, inputPassword ])
-        self.internals.input.send(request)
+        self.xpcWrapper.authenticate(challenge: [inputAppleID, inputPassword])
     }
     
     func sendTwoFARequest(challenge: TwoFA) {
         let input2FA = Input(input: challenge.content)
-        let request = XcodeUpdatesRequest(input: [ input2FA ])
-        self.internals.input.send(request)
+//        let request = XcodeUpdatesRequest(input: [ input2FA ])
+        self.xpcWrapper.sendTwoFA(challenge: [input2FA])
+//        self.internals.input.send(request)
+    }
+    
+    func sendPassword(challenge: Auth) {
+        let inputPassword = Input(input: challenge.password)
+        self.xpcWrapper.sendPassword(challenge: [inputPassword])
     }
     
     func install(version: String, statusOutput: PassthroughSubject<Result<Output, OutputError>, Never>) -> XcodeUpdatesRequest? {
@@ -134,7 +169,8 @@ extension XcodeUpdatesEnvironment {
         if self.isInstalling {
             return .anotherVersionIsBeingInstalled
         }
-        self.internals.reloadExec(RequestFactory.update(searchPath: UserDefaults.standard.downloadsURL))
+        self.xpcWrapper.fetchXcodeList(url: UserDefaults.standard.downloadsURL)
+//        self.internals.reloadExec(RequestFactory.update(searchPath: UserDefaults.standard.downloadsURL))
         return nil
     }
     

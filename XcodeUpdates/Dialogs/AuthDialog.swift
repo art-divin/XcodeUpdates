@@ -61,7 +61,7 @@ struct AuthDialog: View {
 #if DEBUG
 struct AuthDialog_Previews: PreviewProvider {
     static var previews: some View {
-        AuthDialog(auth: Auth(password: "", appleID: "")) { _ in }
+        AuthDialog { _ in }
     }
 }
 #endif

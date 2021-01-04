@@ -14,6 +14,7 @@ enum XcodeUpdateListSheet : Identifiable {
     case twoFA
     case settings
     case downloads
+    case password
     
     var id : Int {
         self.hashValue
@@ -166,6 +167,10 @@ struct XcodeUpdatesList: View {
                     TwoFADialog {
                         self.environment.sendTwoFARequest(challenge: $0)
                     }
+                case .password:
+                    PasswordDialog {
+                        self.environment.sendPassword(challenge: $0)
+                    }
                 case .settings:
                     Preferences()
                 case .downloads:
@@ -221,6 +226,8 @@ struct XcodeUpdatesList: View {
                     self.sheetPrompt = .auth
                 case .twoFA:
                     self.sheetPrompt = .twoFA
+                case .password:
+                    self.sheetPrompt = .password
                 case .unauthorized:
                     self.alertPrompt = .unauthorized
                 case .error:

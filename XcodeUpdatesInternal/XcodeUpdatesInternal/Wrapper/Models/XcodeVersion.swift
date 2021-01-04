@@ -28,6 +28,7 @@ public struct XcodeVersion : Identifiable, Hashable {
         self.name
     }
     
+    public var isNew : Bool = false
     public var name: String
     public var isInstalled : Bool = false
     public var isSelected : Bool = false
@@ -50,6 +51,7 @@ public struct XcodeVersion : Identifiable, Hashable {
         self.isSelected = name.contains(Constants.selected)
         self.isDownloaded = name.contains(Constants.downloaded)
         self.isUnfinished = name.contains(Constants.unfinished)
+        self.isNew = name.contains(Constants.isNew)
         self.name = name.name
         self.releaseDate = name.releaseDate
     }
@@ -59,6 +61,7 @@ public struct XcodeVersion : Identifiable, Hashable {
         static let selected = "Selected"
         static let downloaded = "Downloaded"
         static let unfinished = "Unfinished"
+        static let isNew = "New"
     }
     
 }

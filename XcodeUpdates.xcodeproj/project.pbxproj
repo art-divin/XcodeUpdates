@@ -11,6 +11,13 @@
 		C9056ADE2571A19100A7C194 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9056ADD2571A19100A7C194 /* UserDefaults.swift */; };
 		C90915D82568813100F9F9BF /* XcodeUpdatesInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C903C8742562654F0076CD33 /* XcodeUpdatesInternal.framework */; };
 		C90915D92568813100F9F9BF /* XcodeUpdatesInternal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C903C8742562654F0076CD33 /* XcodeUpdatesInternal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C91CF5D025A2244A00B6BDD7 /* XcodeUpdatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF5CF25A2244A00B6BDD7 /* XcodeUpdatesService.swift */; };
+		C91CF5D225A2244A00B6BDD7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF5D125A2244A00B6BDD7 /* main.swift */; };
+		C91CF5D625A2244A00B6BDD7 /* XcodeUpdatesService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = C91CF5CB25A2244A00B6BDD7 /* XcodeUpdatesService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C91CF5E125A2245E00B6BDD7 /* XPCWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF5E025A2245E00B6BDD7 /* XPCWrapper.swift */; };
+		C91CF5F025A2289300B6BDD7 /* XcodeUpdatesServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF5EF25A2289300B6BDD7 /* XcodeUpdatesServiceDelegate.swift */; };
+		C91CF5F825A229E600B6BDD7 /* XcodeUpdatesInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C903C8742562654F0076CD33 /* XcodeUpdatesInternal.framework */; };
+		C91CF60C25A31C2D00B6BDD7 /* PasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF60B25A31C2D00B6BDD7 /* PasswordDialog.swift */; };
 		C92B1330256AF1BD0063BC06 /* DestructiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92B132F256AF1BD0063BC06 /* DestructiveButton.swift */; };
 		C92D30762576162900A1CD0B /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D30752576162900A1CD0B /* ProgressView.swift */; };
 		C9313D402586851B0058CF9F /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9313D3F2586851B0058CF9F /* RedButton.swift */; };
@@ -35,6 +42,7 @@
 		C9A109292570D93B0068172F /* View+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109282570D93B0068172F /* View+ViewBuilder.swift */; };
 		C9A109312570F9EA0068172F /* XcodeUpdateRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A109302570F9EA0068172F /* XcodeUpdateRequestList.swift */; };
 		C9A22925256C486400AD4094 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A22924256C486400AD4094 /* BlueButton.swift */; };
+		C9C157FF259DBA0E00C4E9EA /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C157FE259DBA0E00C4E9EA /* LocalNotification.swift */; };
 		C9F20995258C5C8200D32F01 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C9F20994258C5C8200D32F01 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +61,13 @@
 			remoteGlobalIDString = C903C85D2562654E0076CD33;
 			remoteInfo = XcodeUpdatesInternalTests;
 		};
+		C91CF5D425A2244A00B6BDD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C944FBBF2561578B00077186 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C91CF5CA25A2244A00B6BDD7;
+			remoteInfo = XcodeUpdatesService;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,12 +82,30 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C91CF5D725A2244A00B6BDD7 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				C91CF5D625A2244A00B6BDD7 /* XcodeUpdatesService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C903C86E2562654E0076CD33 /* XcodeUpdatesInternal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XcodeUpdatesInternal.xcodeproj; path = XcodeUpdatesInternal/XcodeUpdatesInternal.xcodeproj; sourceTree = "<group>"; };
 		C9056AD72571893900A7C194 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		C9056ADD2571A19100A7C194 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		C91CF5CB25A2244A00B6BDD7 /* XcodeUpdatesService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XcodeUpdatesService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		C91CF5CF25A2244A00B6BDD7 /* XcodeUpdatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeUpdatesService.swift; sourceTree = "<group>"; };
+		C91CF5D125A2244A00B6BDD7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C91CF5D325A2244A00B6BDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C91CF5E025A2245E00B6BDD7 /* XPCWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCWrapper.swift; sourceTree = "<group>"; };
+		C91CF5EF25A2289300B6BDD7 /* XcodeUpdatesServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeUpdatesServiceDelegate.swift; sourceTree = "<group>"; };
+		C91CF60B25A31C2D00B6BDD7 /* PasswordDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDialog.swift; sourceTree = "<group>"; };
 		C92B132F256AF1BD0063BC06 /* DestructiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructiveButton.swift; sourceTree = "<group>"; };
 		C92D30752576162900A1CD0B /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		C9313D3F2586851B0058CF9F /* RedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
@@ -102,10 +135,19 @@
 		C9A109282570D93B0068172F /* View+ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ViewBuilder.swift"; sourceTree = "<group>"; };
 		C9A109302570F9EA0068172F /* XcodeUpdateRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeUpdateRequestList.swift; sourceTree = "<group>"; };
 		C9A22924256C486400AD4094 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
+		C9C157FE259DBA0E00C4E9EA /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		C9F20994258C5C8200D32F01 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C91CF5C825A2244A00B6BDD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91CF5F825A229E600B6BDD7 /* XcodeUpdatesInternal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C944FBC42561578B00077186 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,6 +178,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C91CF5CC25A2244A00B6BDD7 /* XcodeUpdatesService */ = {
+			isa = PBXGroup;
+			children = (
+				C91CF5EF25A2289300B6BDD7 /* XcodeUpdatesServiceDelegate.swift */,
+				C91CF5CF25A2244A00B6BDD7 /* XcodeUpdatesService.swift */,
+				C91CF5D125A2244A00B6BDD7 /* main.swift */,
+				C91CF5D325A2244A00B6BDD7 /* Info.plist */,
+			);
+			path = XcodeUpdatesService;
+			sourceTree = "<group>";
+		};
+		C91CF5DF25A2245200B6BDD7 /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+				C91CF5E025A2245E00B6BDD7 /* XPCWrapper.swift */,
+			);
+			path = XPC;
+			sourceTree = "<group>";
+		};
 		C944FBBE2561578B00077186 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +204,7 @@
 				C944FC1525618C6500077186 /* XcodeUpdatesWidgetExtension.entitlements */,
 				C944FBC92561578B00077186 /* XcodeUpdates */,
 				C944FC0825618C5E00077186 /* XcodeUpdatesWidget */,
+				C91CF5CC25A2244A00B6BDD7 /* XcodeUpdatesService */,
 				C944FC0325618C5E00077186 /* Frameworks */,
 				C944FBC82561578B00077186 /* Products */,
 			);
@@ -153,6 +215,7 @@
 			children = (
 				C944FBC72561578B00077186 /* XcodeUpdates.app */,
 				C944FC0225618C5E00077186 /* XcodeUpdatesWidgetExtension.appex */,
+				C91CF5CB25A2244A00B6BDD7 /* XcodeUpdatesService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +223,7 @@
 		C944FBC92561578B00077186 /* XcodeUpdates */ = {
 			isa = PBXGroup;
 			children = (
+				C91CF5DF25A2245200B6BDD7 /* XPC */,
 				C9A109272570D9260068172F /* Extensions */,
 				C9A1091A257042370068172F /* Environment */,
 				C9A10914257042200068172F /* External */,
@@ -167,6 +231,7 @@
 				C9A109342570F9FD0068172F /* Views */,
 				C9A109352570FA030068172F /* Dialogs */,
 				C9A109362570FA090068172F /* Custom UI */,
+				C9C157FB259DB9FE00C4E9EA /* Notifications */,
 				C9706D4F2567008C00FE3FC0 /* Resources.swift */,
 				C944FBCA2561578B00077186 /* XcodeUpdatesApp.swift */,
 				C944FBCE2561578C00077186 /* Assets.xcassets */,
@@ -248,6 +313,7 @@
 			children = (
 				C9706D962567177C00FE3FC0 /* AuthDialog.swift */,
 				C9706D9A25671AD600FE3FC0 /* TwoFADialog.swift */,
+				C91CF60B25A31C2D00B6BDD7 /* PasswordDialog.swift */,
 			);
 			path = Dialogs;
 			sourceTree = "<group>";
@@ -263,9 +329,34 @@
 			path = "Custom UI";
 			sourceTree = "<group>";
 		};
+		C9C157FB259DB9FE00C4E9EA /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				C9C157FE259DBA0E00C4E9EA /* LocalNotification.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C91CF5CA25A2244A00B6BDD7 /* XcodeUpdatesService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C91CF5DC25A2244A00B6BDD7 /* Build configuration list for PBXNativeTarget "XcodeUpdatesService" */;
+			buildPhases = (
+				C91CF5C725A2244A00B6BDD7 /* Sources */,
+				C91CF5C825A2244A00B6BDD7 /* Frameworks */,
+				C91CF5C925A2244A00B6BDD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XcodeUpdatesService;
+			productName = XcodeUpdatesService;
+			productReference = C91CF5CB25A2244A00B6BDD7 /* XcodeUpdatesService.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 		C944FBC62561578B00077186 /* XcodeUpdates */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C944FBD72561578C00077186 /* Build configuration list for PBXNativeTarget "XcodeUpdates" */;
@@ -274,10 +365,12 @@
 				C944FBC42561578B00077186 /* Frameworks */,
 				C944FBC52561578B00077186 /* Resources */,
 				C90915DA2568813100F9F9BF /* Embed Frameworks */,
+				C91CF5D725A2244A00B6BDD7 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C91CF5D525A2244A00B6BDD7 /* PBXTargetDependency */,
 			);
 			name = XcodeUpdates;
 			packageProductDependencies = (
@@ -313,6 +406,9 @@
 				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Ruslan Alikhamov";
 				TargetAttributes = {
+					C91CF5CA25A2244A00B6BDD7 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					C944FBC62561578B00077186 = {
 						CreatedOnToolsVersion = 12.1;
 					};
@@ -344,6 +440,7 @@
 			targets = (
 				C944FBC62561578B00077186 /* XcodeUpdates */,
 				C944FC0125618C5E00077186 /* XcodeUpdatesWidgetExtension */,
+				C91CF5CA25A2244A00B6BDD7 /* XcodeUpdatesService */,
 			);
 		};
 /* End PBXProject section */
@@ -366,6 +463,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C91CF5C925A2244A00B6BDD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C944FBC52561578B00077186 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -387,16 +491,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C91CF5C725A2244A00B6BDD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91CF5D225A2244A00B6BDD7 /* main.swift in Sources */,
+				C91CF5D025A2244A00B6BDD7 /* XcodeUpdatesService.swift in Sources */,
+				C91CF5F025A2289300B6BDD7 /* XcodeUpdatesServiceDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C944FBC32561578B00077186 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C91CF60C25A31C2D00B6BDD7 /* PasswordDialog.swift in Sources */,
 				C9706D502567008C00FE3FC0 /* Resources.swift in Sources */,
 				C9A109292570D93B0068172F /* View+ViewBuilder.swift in Sources */,
 				C9056AD82571893900A7C194 /* Preferences.swift in Sources */,
+				C91CF5E125A2245E00B6BDD7 /* XPCWrapper.swift in Sources */,
 				C97F0E8825717071008683FC /* Preferences_AppKit.swift in Sources */,
 				C9056ADE2571A19100A7C194 /* UserDefaults.swift in Sources */,
 				C9313D402586851B0058CF9F /* RedButton.swift in Sources */,
+				C9C157FF259DBA0E00C4E9EA /* LocalNotification.swift in Sources */,
 				C9706D972567177C00FE3FC0 /* AuthDialog.swift in Sources */,
 				C92D30762576162900A1CD0B /* ProgressView.swift in Sources */,
 				C97F0E7D257111EF008683FC /* DeferredView.swift in Sources */,
@@ -423,7 +540,63 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C91CF5D525A2244A00B6BDD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C91CF5CA25A2244A00B6BDD7 /* XcodeUpdatesService */;
+			targetProxy = C91CF5D425A2244A00B6BDD7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C91CF5D825A2244A00B6BDD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 33V5K4Z5BG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = XcodeUpdatesService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST)_$(_BOOL_$(SKIP_INSTALL)))",
+					"@loader_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xcodeupdates.app.XcodeUpdates.XcodeUpdatesService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C91CF5D925A2244A00B6BDD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 33V5K4Z5BG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = XcodeUpdatesService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST)_$(_BOOL_$(SKIP_INSTALL)))",
+					"@loader_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xcodeupdates.app.XcodeUpdates.XcodeUpdatesService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C944FBD52561578C00077186 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -643,6 +816,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C91CF5DC25A2244A00B6BDD7 /* Build configuration list for PBXNativeTarget "XcodeUpdatesService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91CF5D825A2244A00B6BDD7 /* Debug */,
+				C91CF5D925A2244A00B6BDD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C944FBC22561578B00077186 /* Build configuration list for PBXProject "XcodeUpdates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
